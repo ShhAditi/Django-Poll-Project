@@ -1,0 +1,18 @@
+{% load static%}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Poll App</title>
+    <style>
+        body {
+            background-color:#a9d4d4;
+        }
+    </style>
+    {% comment %} <link rel="stylesheet" href="{% static 'css/style.css' %}"> {% endcomment %}
+</head>
+<body>
+    <div id="content">
+        {% block content %}{% endblock %} 
+    </div>
+</body>
+</html>
