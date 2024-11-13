@@ -1,0 +1,23 @@
+{% load static %}  
+{% comment %} load static loads the static folder in the app poll, this folder containscss, js image files   {% endcomment %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Poll Detail</title>
+    <style>
+        body {
+            background-color:rgb(255, 206, 189);
+        }
+    </style>
+</head>
+<body>
+    <form action="{% url 'poll:vote' question.id %}" method="post">
+        {% csrf_token %}
+        {% for choice in question.choice_set.all %}
+            <input type="radio" name="choice" value="{{ choice.id }}">{{ choice.choice_text }}<br> {% comment %} {{}} Variables are surrounded by double-curly braces {% endcomment %}
+        {% endfor %}
+        <input type="submit" value="Vote">
+    </form>
+    <p><a href="{% url 'poll:index' %}">Back to poll index</a></p>
+</body>
+</html>
